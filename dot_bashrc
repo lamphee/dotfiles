@@ -1,0 +1,13 @@
+# .bashrc
+
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+alias ls='eza --color=always --icons=always'
+alias cd='z'
+alias grep='rg --color=auto'
+alias cat='bat'
+
+# gsettings set org.gnome.desktop.interface icon-theme "Dracula"
+eval "$(zoxide init bash)"

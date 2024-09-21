@@ -1,0 +1,6 @@
+import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
+[font]
+#normal = { family = "0xProto", style = "Regular" }
+#italic = { family = "0xProto", style = "Italic" }
+size = 16
