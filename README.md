@@ -1,9 +1,9 @@
 ## Prerequesites
-'''sh
+```sh
 sudo xbps-install curl
-'''
+```
 
 ## Chezmoi init
-'''sh
+```sh
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
-'''
+```
