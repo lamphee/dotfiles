@@ -3,10 +3,10 @@ import = ["~/.config/alacritty/catppuccin-mocha.toml"]
 [font]
 normal = { family = "GeistMonoNerdFontMono", style = "Regular" }
 italic = { family = "GeistMonoNerdFontMono", style = "Italic" }
-{{ if eq .chezmoi.hostname "kr3094" }}
+{{- if eq .chezmoi.hostname "kr3094" }}
 size = 18
 {{ else if eq .chezmoi.hostname "1998" }}
 size = 14
 {{ else }}
 size = 12
-{{ end }}
+{{ end -}}
