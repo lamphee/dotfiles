@@ -8,3 +8,4 @@ for pkg in $(cat packages); do
 	{{- else if eq .chezmoi.os "linux" -}}
 	echo "different linux distro: {{ .chezmoi.osRelease.name }}"
 	{{- end -}}
+done
