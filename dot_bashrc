@@ -1,13 +1,26 @@
-# .bashrc
-
 [[ $- != *i* ]] && return
 
 PS1='[\u@\h \W]\$ '
 
-alias ls='eza --color=always --icons=always'
-alias cd='z'
-alias grep='rg --color=auto'
-alias cat='bat'
+declare -A commands=(
+['ls']='eza'
+['cd']='zoxide'
+['grep']='rg'
+['cat']='bat'
+)
+
+declare -A aliases=(
+['ls']='eza --color=always --icons=always'
+['cd']='z'
+['grep']='rg --color=auto'
+['cat']='bat'
+)
+
+for cmd in "${!aliases[@]}"; do
+	if command -v "${commands[$cmd]}" &> /dev/null; then
+		eval "alias $cmd='${aliases[$cmd]}'"
+	fi
+done
 
 eval "$(zoxide init bash)"
 
