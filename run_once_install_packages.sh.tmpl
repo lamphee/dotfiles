@@ -1,13 +1,12 @@
 #! /usr/bin/env bash
 
 while IFS= read -r pkg; do
-    {{- if eq .chezmoi.osRelease.name "Void" -}}
+    {{ if eq .chezmoi.osRelease.name "Void" }}
     echo "Installing $pkg"
     res=$(sudo xbps-install -y "$pkg")
 
     echo "$res"
-    {{- else if eq .chezmoi.os "linux" -}}
+    {{ else if eq .chezmoi.os "linux" }}
     echo "Different Linux distro: {{ .chezmoi.osRelease.name }}"
-    {{- end -}}
+    {{ end }}
 done < packages
-
