@@ -1,12 +1,26 @@
 #! /usr/bin/env bash
 
-while IFS= read -r pkg; do
-    {{ if eq .chezmoi.osRelease.name "Void" }}
-    echo "Installing $pkg"
-    res=$(sudo xbps-install -y "$pkg")
 
-    echo "$res"
-    {{ else if eq .chezmoi.os "linux" }}
-    echo "Different Linux distro: {{ .chezmoi.osRelease.name }}"
-    {{ end }}
-done < ./packages
+# probably won't work {{ range .packages.linux }}{{ . | xargs -n1 }}{{ end }}
+
+signal_on_interrupt='
+{{ if eq .chezmoi.osRelease.name "Void" }}
+#!/bin/bash
+
+# Function to handle SIGINT (Ctrl-C)
+trap 'echo "Installation interrupted."; exit' SIGINT
+
+# Loop through each package defined in the .chezmoidata file
+for pkg in {{ range .packages.linux }}{{ . }}{{ end }}; do
+    echo "Installing package: $pkg"
+    # Use a subshell to allow for graceful exit on interrupt
+    ( sudo xbps-install -y "$pkg" ) || { echo "Failed to install $pkg"; }
+done
+{{ end }}
+'
+
+{{ if eq .chezmoi.osRelease.name "Void" }}
+	{{ range .packages.linux }}
+	sudo xbps-install -y {{ . | xargs -n1 }}
+	{{ end }}
+{{ end }}
