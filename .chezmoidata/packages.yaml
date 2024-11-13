@@ -1,24 +1,25 @@
 packages:
-  general:
-    - "ghidra"
-    - "keepassxc"
-    - "neomutt"
-    - "podman"
-    - "rclone"
-    - "telegram-desktop"
-    - "valgrind"
-  compilers:
-    - "zig"
-    - "go"
-  cli:
-    - "bat"
-    - "btop"
-    - "eza"
-    - "fastfetch"
-    - "git"
-    - "tldr"
-    - "ripgrep"
-    - "pandoc"
-    - "neovim"
-    - "lazygit"
-    - "zoxide"
+  fedora:
+    general:
+      - "ghidra"
+      - "keepassxc"
+      - "neomutt"
+      - "podman"
+      - "rclone"
+      - "telegram-desktop"
+      - "valgrind"
+    compilers:
+      - "zig"
+      - "go"
+    cli:
+      - "git"
+      - "fastfetch"
+      - "eza"
+      - "btop"
+      - "bat"
+      - "tldr"
+      - "ripgrep"
+      - "pandoc"
+      - "neovim"
+      - "lazygit"
+      - "zoxide"

@@ -1,0 +1,11 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+
+sudo dnf check-update
+
+sudo dnf install --skip-unavailable -y \
+    {{ range .packages.fedora.general }}{{ . | quote }} {{ end }} \
+    {{ range .packages.fedora.compilers }}{{ . | quote }} {{ end }} \
+    {{ range .packages.fedora.cli }}{{ . | quote }} {{ end }}
+{{ end -}}
+

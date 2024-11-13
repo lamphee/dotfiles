@@ -1,3 +1,6 @@
+# In fullscreen mode the borders of the window are still presented
+# Find the config attribute that can dymanicly hide the borders (remove them)
+# when the window is in the fullscreen mode (super+f)
 include theme
 # Default config for sway
 #
@@ -32,7 +35,7 @@ set $menu $rofi_cmd -show drun
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # Requires: desktop-backgrounds-compat, swaybg
-output * bg /usr/share/backgrounds/default.png fill
+output * bg /usr/share/backgrounds/background.jpg fill
 #
 # Example configuration:
 #
@@ -66,6 +69,16 @@ output * bg /usr/share/backgrounds/default.png fill
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+
+input * {
+    tap enabled
+    xkb_layout us,ru
+    xkb_options caps:escape,grp:alt_shift_toggle
+}
+
+input type:keyboard {
+    xkb_layout us,ru
+}
 
 ### Key bindings
 #
