@@ -1,5 +1,3 @@
-require 'core'
-
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -72,4 +70,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+require 'core'
 require 'lazy_managed'
